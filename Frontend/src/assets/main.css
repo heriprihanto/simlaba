@@ -40,12 +40,31 @@ html.dark body {
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #c1c9d4; border-radius: 100px; }
-html.dark ::-webkit-scrollbar-thumb { background: #2d3a4e; }
-::-webkit-scrollbar-thumb:hover { background: #8b99ab; }
-html.dark ::-webkit-scrollbar-thumb:hover { background: #475b73; }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c9d4;
+  border-radius: 100px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2d3a4e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b99ab;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475b73;
+}
 
 /* Selection */
 ::selection {
@@ -55,24 +74,61 @@ html.dark ::-webkit-scrollbar-thumb:hover { background: #475b73; }
 
 /* Animations */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 @keyframes pulse-dot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0.5; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
 }
-.animate-fade-up { animation: fadeUp 0.4s cubic-bezier(.4,0,.2,1) both; }
+
+.animate-fade-up {
+  animation: fadeUp 0.4s cubic-bezier(.4, 0, .2, 1) both;
+}
 
 /* No-scrollbar */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 /* Smooth table with thin hairline rows */
-table { border-collapse: collapse; border-spacing: 0; }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 table tbody tr {
   border-bottom: 1px solid rgba(148, 163, 184, 0.15);
 }
+
 html.dark table tbody tr {
   border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+}
+
+
+.bg-nav-slate-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(48 142 135 / 0.1);
 }

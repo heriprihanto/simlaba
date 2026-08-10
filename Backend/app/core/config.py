@@ -18,6 +18,11 @@ class Settings(BaseSettings):
 
     BACKEND_CORS_ORIGINS: str = "http://localhost,http://localhost:5173,http://localhost:8000,http://127.0.0.1:5173"
 
+    # Uploads & URLs
+    UPLOAD_PATH: str = "/BERKAS_UPLOAD/"
+    BASE_URL: str = "http://localhost/simlaba/"
+    ASSET_URL: str = "http://localhost/simlaba/assets/"
+
     # SMTP Emails
     SMTP_HOST: str = "mail.tegalkota.go.id"
     SMTP_USER: str = "bapperida"

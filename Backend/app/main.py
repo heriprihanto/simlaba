@@ -3,7 +3,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from app.core.config import settings
-from app.api.endpoints import auth, dashboard, personel, peta, pengaturan, rko
+from app.api.endpoints import auth, dashboard, personel, peta, pengaturan, rko, rfk
+from app.pages.page_router import page_router
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -24,10 +25,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Static Files for Uploads
+# Static Files for Uploads (Configured via UPLOAD_PATH in .env)
+clean_upload_path = settings.UPLOAD_PATH.strip('"/\\') if settings.UPLOAD_PATH else "BERKAS_UPLOAD"
 backend_dir = os.path.dirname(os.path.abspath(__file__))
-uploads_dir = os.path.join(backend_dir, "uploads")
+project_dir = os.path.dirname(backend_dir)
+uploads_dir = os.path.join(project_dir, clean_upload_path)
 os.makedirs(uploads_dir, exist_ok=True)
+
+app.mount(f"/{clean_upload_path}", StaticFiles(directory=uploads_dir), name=clean_upload_path)
 app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
 
 # Register Routers
@@ -37,6 +42,7 @@ app.include_router(personel.router, prefix=f"{settings.API_V1_STR}/personel", ta
 app.include_router(peta.router, prefix=f"{settings.API_V1_STR}/peta", tags=["Peta"])
 app.include_router(pengaturan.router, prefix=f"{settings.API_V1_STR}/pengaturan", tags=["Pengaturan"])
 app.include_router(rko.router, prefix=f"{settings.API_V1_STR}/rko", tags=["RKO"])
+app.include_router(rfk.router, prefix=f"{settings.API_V1_STR}/rfk", tags=["RFK"])
 
 
 @app.get("/")
@@ -47,6 +53,8 @@ def root():
         "version": "1.0.0",
         "docs_url": "/docs"
     }
+
+app.include_router(page_router)
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@
         </div>
 
         <!-- Desktop Nav -->
-        <nav class="hidden md:flex items-center bg-slate-50 dark:bg-slate-800/50 rounded-xl p-1 space-x-0.5 border border-slate-200/80 dark:border-slate-700/50">
+        <nav class="hidden md:flex items-center bg-nav-slate-50 dark:bg-slate-800/50 rounded-xl p-1 space-x-0.5 border border-slate-200/80 dark:border-slate-700/50">
           <router-link 
             v-for="item in navItems" 
             :key="item.path"

@@ -7,6 +7,7 @@ import PersonelView from '@/views/PersonelView.vue'
 import PengaturanView from '@/views/PengaturanView.vue'
 import LaporanView from '@/views/LaporanView.vue'
 import RkoView from '@/views/RkoView.vue'
+import RfkView from '@/views/RfkView.vue'
 import PetaView from '@/views/PetaView.vue'
 import PlaceholderView from '@/views/PlaceholderView.vue'
 
@@ -38,8 +39,7 @@ const routes = [
   {
     path: '/rfk',
     name: 'rfk',
-    component: PlaceholderView,
-    props: { title: 'Realisasi Fisik & Keuangan (RFK)', description: 'Modul pencatatan & pemantauan realisasi fisik dan keuangan.' },
+    component: RfkView,
     meta: { requiresAuth: true }
   },
   {
@@ -58,6 +58,12 @@ const routes = [
     path: '/peta',
     name: 'peta',
     component: PetaView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/report/:id',
+    name: 'report-detail',
+    component: () => import('@/views/ReportDetailView.vue'),
     meta: { requiresAuth: true }
   }
 ]

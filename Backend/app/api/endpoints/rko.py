@@ -49,6 +49,9 @@ class PekerjaanCreate(BaseModel):
     nama_pptk: Optional[str] = None
     id_sumber_dana: Optional[int] = None
     sumber_dana: Optional[str] = None
+    id_usulan_pokir: Optional[List[int]] = None
+    id_usulan_musrenbang: Optional[List[int]] = None
+    id_dak_detail_rincian: Optional[int] = None
     tags: Optional[List[str]] = None
     lokasi_list: Optional[List[LokasiItemSchema]] = None
 
@@ -104,6 +107,9 @@ class PekerjaanUpdate(BaseModel):
     nama_pptk: Optional[str] = None
     id_sumber_dana: Optional[int] = None
     sumber_dana: Optional[str] = None
+    id_usulan_pokir: Optional[List[int]] = None
+    id_usulan_musrenbang: Optional[List[int]] = None
+    id_dak_detail_rincian: Optional[int] = None
     tags: Optional[List[str]] = None
     lokasi_list: Optional[List[LokasiItemSchema]] = None
 
@@ -338,6 +344,11 @@ def get_rko_opd_detail(
                 COALESCE(p.pagu_anggaran, 0) AS pagu_anggaran,
                 p.jenis_paket,
                 p.nomor_rup,
+                p.nama_ppk,
+                p.nama_pptk,
+                p.id_usulan_pokir,
+                p.id_usulan_musrenbang,
+                p.id_dak_detail_rincian,
                 COALESCE(p.jan, 0) AS jan_k, COALESCE(p.feb, 0) AS feb_k, COALESCE(p.mar, 0) AS mar_k,
                 COALESCE(p.apr, 0) AS apr_k, COALESCE(p.mei, 0) AS mei_k, COALESCE(p.jun, 0) AS jun_k,
                 COALESCE(p.jul, 0) AS jul_k, COALESCE(p.agu, 0) AS agu_k, COALESCE(p.sep, 0) AS sep_k,
@@ -418,6 +429,11 @@ def get_rko_opd_detail(
                     "pagu_anggaran": pagu_pek,
                     "jenis_paket": r["jenis_paket"],
                     "nomor_rup": r["nomor_rup"],
+                    "nama_ppk": r["nama_ppk"],
+                    "nama_pptk": r["nama_pptk"],
+                    "id_usulan_pokir": r["id_usulan_pokir"],
+                    "id_usulan_musrenbang": r["id_usulan_musrenbang"],
+                    "id_dak_detail_rincian": r["id_dak_detail_rincian"],
                     "target_keuangan": target_k,
                     "target_fisik": target_f
                 })
@@ -553,7 +569,7 @@ def create_pekerjaan(
                 id, id_sub_pd, id_subkegiatan, tahun, nomor_pekerjaan, nama_pekerjaan, ket_pekerjaan, lokasi, pagu_anggaran,
                 volume, satuan, nomor_rup, jenis_paket, jenis_pengadaan, tipe_swa, penyelenggara_swa, metode,
                 awal_pelaksanaan, akhir_pelaksanaan, pelaksanaan_bulan, awal_pemilihan, akhir_pemilihan, awal_kontrak, akhir_kontrak,
-                nama_ppk, nama_pptk, id_sumber_dana, sumber_dana,
+                nama_ppk, nama_pptk, id_sumber_dana, sumber_dana, id_usulan_pokir, id_usulan_musrenbang, id_dak_detail_rincian,
                 tg1, tg2, tg3, tg4, tg5,
                 jan, feb, mar, apr, mei, jun, jul, agu, sep, okt, nov, des,
                 jan_f, feb_f, mar_f, apr_f, mei_f, jun_f, jul_f, agu_f, sep_f, okt_f, nov_f, des_f
@@ -561,7 +577,7 @@ def create_pekerjaan(
                 :id, :id_sub_pd, :id_subkegiatan, :tahun, :nomor_pekerjaan, :nama_pekerjaan, :ket_pekerjaan, :lokasi, :pagu_anggaran,
                 :volume, :satuan, :nomor_rup, :jenis_paket, :jenis_pengadaan, :tipe_swa, :penyelenggara_swa, :metode,
                 :awal_pelaksanaan, :akhir_pelaksanaan, :pelaksanaan_bulan, :awal_pemilihan, :akhir_pemilihan, :awal_kontrak, :akhir_kontrak,
-                :nama_ppk, :nama_pptk, :id_sumber_dana, :sumber_dana,
+                :nama_ppk, :nama_pptk, :id_sumber_dana, :sumber_dana, :id_usulan_pokir, :id_usulan_musrenbang, :id_dak_detail_rincian,
                 :tg1, :tg2, :tg3, :tg4, :tg5,
                 :jan, :feb, :mar, :apr, :mei, :jun, :jul, :agu, :sep, :okt, :nov, :des,
                 :jan_f, :feb_f, :mar_f, :apr_f, :mei_f, :jun_f, :jul_f, :agu_f, :sep_f, :okt_f, :nov_f, :des_f
@@ -597,6 +613,9 @@ def create_pekerjaan(
             "nama_pptk": payload.nama_pptk,
             "id_sumber_dana": payload.id_sumber_dana,
             "sumber_dana": payload.sumber_dana,
+            "id_usulan_pokir": payload.id_usulan_pokir,
+            "id_usulan_musrenbang": payload.id_usulan_musrenbang,
+            "id_dak_detail_rincian": payload.id_dak_detail_rincian,
             "tg1": tg1, "tg2": tg2, "tg3": tg3, "tg4": tg4, "tg5": tg5,
             "jan": tk[0], "feb": tk[1], "mar": tk[2], "apr": tk[3], "mei": tk[4], "jun": tk[5],
             "jul": tk[6], "agu": tk[7], "sep": tk[8], "okt": tk[9], "nov": tk[10], "des": tk[11],
@@ -749,6 +768,9 @@ def update_pekerjaan(
                 nama_pptk = COALESCE(:nama_pptk, nama_pptk),
                 id_sumber_dana = COALESCE(:id_sumber_dana, id_sumber_dana),
                 sumber_dana = COALESCE(:sumber_dana, sumber_dana),
+                id_usulan_pokir = :id_usulan_pokir,
+                id_usulan_musrenbang = :id_usulan_musrenbang,
+                id_dak_detail_rincian = :id_dak_detail_rincian,
                 tg1 = :tg1, tg2 = :tg2, tg3 = :tg3, tg4 = :tg4, tg5 = :tg5,
                 jan = :jan, feb = :feb, mar = :mar, apr = :apr, mei = :mei, jun = :jun,
                 jul = :jul, agu = :agu, sep = :sep, okt = :okt, nov = :nov, des = :des,
@@ -783,6 +805,9 @@ def update_pekerjaan(
             "nama_pptk": payload.nama_pptk,
             "id_sumber_dana": payload.id_sumber_dana,
             "sumber_dana": payload.sumber_dana,
+            "id_usulan_pokir": payload.id_usulan_pokir if payload.id_usulan_pokir is not None else row.get("id_usulan_pokir"),
+            "id_usulan_musrenbang": payload.id_usulan_musrenbang if payload.id_usulan_musrenbang is not None else row.get("id_usulan_musrenbang"),
+            "id_dak_detail_rincian": payload.id_dak_detail_rincian if payload.id_dak_detail_rincian is not None else row.get("id_dak_detail_rincian"),
             "tg1": tg1, "tg2": tg2, "tg3": tg3, "tg4": tg4, "tg5": tg5,
             "jan": tk[0], "feb": tk[1], "mar": tk[2], "apr": tk[3], "mei": tk[4], "jun": tk[5],
             "jul": tk[6], "agu": tk[7], "sep": tk[8], "okt": tk[9], "nov": tk[10], "des": tk[11],
@@ -1115,3 +1140,130 @@ def get_ref_sumberdana(db: Session = Depends(get_db)):
     except Exception as e:
         print("Error fetching ref_sumberdana:", e)
         return []
+
+
+@router.get("/pokir-options")
+def get_pokir_options(
+    q: Optional[str] = Query(None, description="Search by nama_kamus, usulan, or nama_pengusul"),
+    tahun: Optional[int] = Query(2026, description="Tahun"),
+    db: Session = Depends(get_db)
+):
+    try:
+        where_clauses = ["(tahun = :tahun OR :tahun IS NULL)"]
+        params = {"tahun": tahun}
+        
+        if q and q.strip():
+            where_clauses.append("(nama_kamus ILIKE :q OR usulan ILIKE :q OR nama_pengusul ILIKE :q OR alamat_teks ILIKE :q)")
+            params["q"] = f"%{q.strip()}%"
+            
+        where_sql = "WHERE " + " AND ".join(where_clauses)
+        
+        sql = text(f"""
+            SELECT id_usulan, nama_kamus, usulan, nama_pengusul, alamat_teks, tahun, anggaran, volume, satuan, nama_skpd_awal
+            FROM ta_pokir
+            {where_sql}
+            ORDER BY nama_pengusul ASC, id_usulan DESC
+            LIMIT 500
+        """)
+        rows = db.execute(sql, params).mappings().all()
+        results = []
+        for r in rows:
+            d = dict(r)
+            d["anggaran"] = float(d["anggaran"] or 0)
+            results.append(d)
+        return results
+    except Exception as e:
+        print("Error fetching pokir options:", e)
+        return []
+
+
+@router.get("/musrenbang-options")
+def get_musrenbang_options(
+    q: Optional[str] = Query(None, description="Search by nama_kamus, usulan, nama_pengusul, or alamat_teks"),
+    tahun: Optional[int] = Query(2026, description="Tahun"),
+    db: Session = Depends(get_db)
+):
+    try:
+        where_clauses = ["(tahun = :tahun OR :tahun IS NULL)"]
+        params = {"tahun": tahun}
+        
+        if q and q.strip():
+            where_clauses.append("(nama_kamus ILIKE :q OR usulan ILIKE :q OR nama_pengusul ILIKE :q OR alamat_teks ILIKE :q)")
+            params["q"] = f"%{q.strip()}%"
+            
+        where_sql = "WHERE " + " AND ".join(where_clauses)
+        
+        sql = text(f"""
+            SELECT id_usulan, nama_kamus, usulan, nama_pengusul, alamat_teks, tahun, anggaran, volume, satuan, nama_skpd_awal, lurah_teks, camat_teks
+            FROM ta_musrenbang
+            {where_sql}
+            ORDER BY nama_pengusul ASC, id_usulan DESC
+            LIMIT 500
+        """)
+        rows = db.execute(sql, params).mappings().all()
+        results = []
+        for r in rows:
+            d = dict(r)
+            d["anggaran"] = float(d["anggaran"] or 0)
+            results.append(d)
+        return results
+    except Exception as e:
+        print("Error fetching musrenbang options:", e)
+        return []
+
+
+@router.get("/dak-options")
+def get_dak_options(
+    id_sub_pd: Optional[int] = Query(None, description="Filter by id_sub_pd"),
+    q: Optional[str] = Query(None, description="Search term"),
+    tahun: Optional[int] = Query(2026, description="Tahun"),
+    db: Session = Depends(get_db)
+):
+    try:
+        where_clauses = ["(tahun = :tahun OR :tahun IS NULL)"]
+        params = {"tahun": tahun}
+        
+        if id_sub_pd:
+            where_clauses.append("(id_sub_pd = :id_sub_pd OR id_sub_pd IS NULL)")
+            params["id_sub_pd"] = id_sub_pd
+
+        if q and q.strip():
+            where_clauses.append("""(
+                t1_nama ILIKE :q OR t2_nama ILIKE :q OR t3_nama ILIKE :q OR 
+                t4_nama ILIKE :q OR t5_nama ILIKE :q OR jenis ILIKE :q
+            )""")
+            params["q"] = f"%{q.strip()}%"
+            
+        where_sql = "WHERE " + " AND ".join(where_clauses)
+        
+        sql = text(f"""
+            SELECT id, id_sub_pd, jenis, 
+                   t1_kode, t1_nama, 
+                   t2_kode, t2_nama, 
+                   t3_kode, t3_nama, 
+                   t4_kode, t4_nama, 
+                   t5_kode, t5_nama 
+            FROM dak_detail_rincian
+            {where_sql}
+            ORDER BY id_sub_pd ASC, t1_nama ASC, id ASC
+            LIMIT 500
+        """)
+        rows = db.execute(sql, params).mappings().all()
+        results = []
+        for r in rows:
+            d = dict(r)
+            d["t1_nama"] = (d["t1_nama"] or "").strip()
+            d["t2_nama"] = (d["t2_nama"] or "").strip()
+            d["t3_nama"] = (d["t3_nama"] or "").strip()
+            d["t4_nama"] = (d["t4_nama"] or "").strip()
+            d["t5_nama"] = (d["t5_nama"] or "").strip()
+            parts = [p for p in [d["t1_nama"], d["t2_nama"], d["t3_nama"], d["t4_nama"], d["t5_nama"]] if p]
+            d["nama_full"] = " > ".join(parts)
+            results.append(d)
+        return results
+    except Exception as e:
+        print("Error fetching dak options:", e)
+        return []
+
+
+

@@ -342,19 +342,27 @@
                 <th rowspan="2" class="py-3 px-4 text-left border-r border-slate-200 dark:border-slate-800 w-[360px] max-w-[360px] sticky left-[90px] bg-[#308e87]/15 dark:bg-[#141d30] z-20">
                   Program > Kegiatan > Subkegiatan > Pekerjaan
                 </th>
-                <!-- 3. ANGGARAN RENJA -->
+                <!-- 3. NAMA PPK -->
+                <th rowspan="2" class="py-3 px-3 border-r border-slate-200 dark:border-slate-800 min-w-[140px] text-left">
+                  Nama PPK
+                </th>
+                <!-- 4. NAMA PPTK -->
+                <th rowspan="2" class="py-3 px-3 border-r border-slate-200 dark:border-slate-800 min-w-[140px] text-left">
+                  Nama PPTK
+                </th>
+                <!-- 5. ANGGARAN RENJA -->
                 <th rowspan="2" class="py-3 px-3 border-r border-slate-200 dark:border-slate-800 min-w-[130px] text-right">
                   Anggaran DPA
                 </th>
-                <!-- 4. ANGGARAN PEKERJAAN -->
+                <!-- 6. ANGGARAN PEKERJAAN -->
                 <th rowspan="2" class="py-3 px-3 border-r border-slate-200 dark:border-slate-800 min-w-[130px] text-right">
                   Anggaran Pekerjaan
                 </th>
-                <!-- 5. TARGET FISIK (12 COLS) -->
+                <!-- 7. TARGET FISIK (12 COLS) -->
                 <th colspan="12" class="py-2 px-2 border-r border-slate-200 dark:border-slate-800 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
                   Target Fisik (%)
                 </th>
-                <!-- 6. TARGET KEUANGAN (12 COLS) -->
+                <!-- 8. TARGET KEUANGAN (12 COLS) -->
                 <th colspan="12" class="py-2 px-2 bg-blue-500/10 text-blue-700 dark:text-blue-400">
                   Target Keuangan (%)
                 </th>
@@ -385,7 +393,10 @@
                   </td>
 
                   <!-- Uraian Program (Sticky Left 90px) -->
-                  <td class="py-3 px-4 border-r border-b border-slate-200 dark:border-slate-800 w-[360px] max-w-[360px] sticky left-[90px] bg-slate-50 dark:bg-[#141d30] z-20">
+                  <td 
+                    class="py-3 px-4 border-r border-b border-slate-200 dark:border-slate-800 w-[360px] max-w-[360px] sticky left-[90px] bg-slate-50 dark:bg-[#141d30] z-20"
+                    :title="'Program: ' + prog.kode + ' - ' + prog.nama"
+                  >
                     <div class="flex items-center space-x-2 min-w-0 max-w-[330px]">
                       <ChevronRight 
                         class="w-4 h-4 text-[#308e87] transition-transform duration-200 shrink-0" 
@@ -400,6 +411,12 @@
                       </span>
                     </div>
                   </td>
+
+                  <!-- Nama PPK -->
+                  <td class="py-3 px-3 border-r border-b border-slate-200 dark:border-slate-800 text-slate-400 font-normal text-center">-</td>
+
+                  <!-- Nama PPTK -->
+                  <td class="py-3 px-3 border-r border-b border-slate-200 dark:border-slate-800 text-slate-400 font-normal text-center">-</td>
 
                   <!-- Anggaran Renja -->
                   <td class="py-3 px-3 text-right font-black text-slate-900 dark:text-white border-r border-b border-slate-200 dark:border-slate-800">
@@ -436,7 +453,10 @@
                     </td>
 
                     <!-- Uraian Kegiatan (Sticky Left 90px, Indented Level 1) -->
-                    <td class="py-2.5 px-4 pl-9 border-r border-b border-slate-200 dark:border-slate-800 w-[360px] max-w-[360px] sticky left-[90px] bg-blue-50/30 dark:bg-[#141d30] z-20">
+                    <td 
+                      class="py-2.5 px-4 pl-9 border-r border-b border-slate-200 dark:border-slate-800 w-[360px] max-w-[360px] sticky left-[90px] bg-blue-50/30 dark:bg-[#141d30] z-20"
+                      :title="'Kegiatan: ' + keg.kode + ' - ' + keg.nama"
+                    >
                       <div class="flex items-center space-x-2 min-w-0 max-w-[310px]">
                         <ChevronRight 
                           class="w-3.5 h-3.5 text-blue-500 transition-transform duration-200 shrink-0" 
@@ -451,6 +471,12 @@
                         </span>
                       </div>
                     </td>
+
+                    <!-- Nama PPK -->
+                    <td class="py-2.5 px-3 border-r border-b border-slate-200 dark:border-slate-800 text-slate-400 font-normal text-center">-</td>
+
+                    <!-- Nama PPTK -->
+                    <td class="py-2.5 px-3 border-r border-b border-slate-200 dark:border-slate-800 text-slate-400 font-normal text-center">-</td>
 
                     <!-- Anggaran Renja -->
                     <td class="py-2.5 px-3 text-right font-bold text-slate-800 dark:text-slate-200 border-r border-b border-slate-200 dark:border-slate-800">
@@ -498,7 +524,10 @@
                       </td>
 
                       <!-- Uraian Subkegiatan (Sticky Left 90px, Indented Level 2) -->
-                      <td class="py-2.5 px-4 pl-14 border-r border-b border-slate-200 dark:border-slate-800 w-[360px] max-w-[360px] sticky left-[90px] bg-emerald-50/30 dark:bg-[#141d30] z-20">
+                      <td 
+                        class="py-2.5 px-4 pl-14 border-r border-b border-slate-200 dark:border-slate-800 w-[360px] max-w-[360px] sticky left-[90px] bg-emerald-50/30 dark:bg-[#141d30] z-20"
+                        :title="'Subkegiatan: ' + sub.kode + ' - ' + sub.nama"
+                      >
                         <div class="flex items-center space-x-2 min-w-0 max-w-[290px]">
                           <ChevronRight 
                             class="w-3.5 h-3.5 text-emerald-600 transition-transform duration-200 shrink-0" 
@@ -512,6 +541,12 @@
                           </span>
                         </div>
                       </td>
+
+                      <!-- Nama PPK -->
+                      <td class="py-2.5 px-3 border-r border-b border-slate-200 dark:border-slate-800 text-slate-400 font-normal text-center">-</td>
+
+                      <!-- Nama PPTK -->
+                      <td class="py-2.5 px-3 border-r border-b border-slate-200 dark:border-slate-800 text-slate-400 font-normal text-center">-</td>
 
                       <!-- Anggaran Renja Subkegiatan -->
                       <td 
@@ -578,7 +613,10 @@
                         </td>
 
                         <!-- Uraian Pekerjaan (Sticky Left 90px, Indented Level 3) -->
-                        <td class="py-2 px-4 pl-20 border-r border-b border-slate-150 dark:border-slate-800/60 w-[360px] max-w-[360px] sticky left-[90px] bg-white dark:bg-[#141d30] z-20">
+                        <td 
+                          class="py-2 px-4 pl-20 border-r border-b border-slate-150 dark:border-slate-800/60 w-[360px] max-w-[360px] sticky left-[90px] bg-white dark:bg-[#141d30] z-20"
+                          :title="'Pekerjaan: ' + (pek.nomor_pekerjaan ? pek.nomor_pekerjaan + '. ' : '') + pek.nama_pekerjaan"
+                        >
                           <div class="flex items-center space-x-2 min-w-0 max-w-[270px]">
                             <Briefcase class="w-3.5 h-3.5 text-[#f39159] shrink-0" />
                             <span class="font-bold text-slate-800 dark:text-slate-200 text-xs leading-snug truncate">
@@ -588,6 +626,24 @@
                               RUP: {{ pek.nomor_rup }}
                             </span>
                           </div>
+                        </td>
+
+                        <!-- Nama PPK -->
+                        <td class="py-2 px-3 border-r border-b border-slate-150 dark:border-slate-800/60 font-semibold text-slate-700 dark:text-slate-200">
+                          <span v-if="pek.nama_ppk" class="inline-flex items-center text-xs">
+                            <UserCheck class="w-3.5 h-3.5 mr-1 text-[#308e87] shrink-0" />
+                            <span>{{ pek.nama_ppk }}</span>
+                          </span>
+                          <span v-else class="text-slate-400 font-normal text-xs text-center block">-</span>
+                        </td>
+
+                        <!-- Nama PPTK -->
+                        <td class="py-2 px-3 border-r border-b border-slate-150 dark:border-slate-800/60 font-semibold text-slate-700 dark:text-slate-200">
+                          <span v-if="pek.nama_pptk" class="inline-flex items-center text-xs">
+                            <UserCheck class="w-3.5 h-3.5 mr-1 text-blue-500 shrink-0" />
+                            <span>{{ pek.nama_pptk }}</span>
+                          </span>
+                          <span v-else class="text-slate-400 font-normal text-xs text-center block">-</span>
                         </td>
 
                         <!-- Anggaran Renja Pekerjaan (Dash) -->
@@ -629,18 +685,37 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- MODAL FORM: TAMBAH / EDIT PEKERJAAN (LENGKAP) -->
     <!-- ═══════════════════════════════════════════════════════════ -->
-    <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
-      <div class="bg-white dark:bg-[#141d30] border-2 border-slate-200 dark:border-slate-800 rounded-3xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 my-auto">
+    <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+      <div 
+        class="bg-white dark:bg-[#141d30] border-2 border-slate-200 dark:border-slate-800 w-full flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 transition-all"
+        :class="isFormMaximized ? 'fixed inset-2 sm:inset-4 max-w-none max-h-none h-[calc(100vh-1rem)] sm:h-[calc(100vh-2rem)] rounded-2xl z-50 my-0' : 'max-w-4xl max-h-[90vh] rounded-3xl my-auto'"
+      >
         
         <!-- Modal Header -->
-        <div class="px-6 py-4 bg-gradient-to-r from-[#1a4845] to-[#308e87] text-white flex items-center justify-between">
+        <div class="px-6 py-4 bg-gradient-to-r from-[#1a4845] to-[#308e87] text-white flex items-center justify-between shrink-0">
           <div>
             <span class="text-[10px] font-black uppercase tracking-widest text-[#3aada4]">Form Kelola Pekerjaan</span>
             <h3 class="text-base font-black">{{ isEditMode ? 'Edit Paket Pekerjaan' : 'Tambah Paket Pekerjaan Baru' }}</h3>
           </div>
-          <button @click="showModal = false" class="p-1.5 rounded-full hover:bg-white/20 text-white transition-colors cursor-pointer">
-            <X class="w-5 h-5" />
-          </button>
+          <div class="flex items-center space-x-1.5">
+            <button 
+              type="button" 
+              @click="isFormMaximized = !isFormMaximized" 
+              class="p-1.5 rounded-lg hover:bg-white/20 text-white transition-colors cursor-pointer"
+              :title="isFormMaximized ? 'Kecilkan Tampilan (Minimize)' : 'Perbesar Tampilan Fullscreen (Maximize)'"
+            >
+              <Minimize2 v-if="isFormMaximized" class="w-4 h-4" />
+              <Maximize2 v-else class="w-4 h-4" />
+            </button>
+            <button 
+              type="button" 
+              @click="showModal = false" 
+              class="p-1.5 rounded-full hover:bg-white/20 text-white transition-colors cursor-pointer"
+              title="Tutup Form"
+            >
+              <X class="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         <!-- Modal Body (Form Lengkap) -->
@@ -656,7 +731,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <!-- Subkegiatan Name (Readonly) -->
               <div class="sm:col-span-2 lg:col-span-3 space-y-1">
-                <label class="font-bold text-slate-600 dark:text-slate-400">Subkegiatan Target</label>
+                <label class="font-bold text-slate-600 dark:text-slate-400">Subkegiatan</label>
                 <input type="text" :value="targetSubkegiatanName" readonly class="w-full px-3.5 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold text-slate-600 dark:text-slate-300" />
               </div>
 
@@ -822,6 +897,108 @@
                       </div>
                     </div>
 
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conditional Section: Detail Rincian DAK (tabel dak_detail_rincian) - Single Select -->
+              <div v-if="isDakSumberDana" class="sm:col-span-2 lg:col-span-3 space-y-2.5 p-4 rounded-2xl bg-cyan-500/10 border-2 border-cyan-500/30 relative">
+                <div class="flex items-center justify-between">
+                  <label class="font-extrabold text-cyan-900 dark:text-cyan-200 flex items-center space-x-1.5 text-xs">
+                    <FileText class="w-4 h-4 text-cyan-600 shrink-0" />
+                    <span>Rincian DAK</span>
+                    <span v-if="selectedDakObj" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-800 dark:text-cyan-300">
+                      Terpilih (ID: {{ selectedDakObj.id }})
+                    </span>
+                  </label>
+                  <button 
+                    v-if="form.id_dak_detail_rincian" 
+                    type="button" 
+                    @click="clearDakSelection" 
+                    class="text-[10px] font-black text-rose-500 hover:underline cursor-pointer"
+                  >
+                    Reset Pilihan
+                  </button>
+                </div>
+
+                <!-- Single Select Trigger Box showing selected DAK or placeholder -->
+                <div 
+                  @click.stop="isDakDropdownOpen = !isDakDropdownOpen"
+                  class="min-h-[44px] w-full p-2.5 bg-white dark:bg-slate-900 border-2 border-cyan-300 dark:border-cyan-700/50 rounded-xl cursor-pointer flex items-center justify-between gap-2 focus:border-cyan-600 transition-all shadow-xs"
+                  :class="isDakDropdownOpen ? 'border-cyan-600 ring-2 ring-cyan-500/20' : ''"
+                >
+                  <!-- Selected Item Display -->
+                  <div class="flex-1 min-w-0">
+                    <template v-if="selectedDakObj">
+                      <div class="space-y-0.5 text-xs text-cyan-950 dark:text-cyan-100">
+                        <div class="flex items-center space-x-1.5 font-black text-cyan-800 dark:text-cyan-300 text-[11px]">
+                          <span class="px-1.5 py-0.5 rounded bg-cyan-600 text-white font-mono text-[9px]">ID: {{ selectedDakObj.id }}</span>
+                          <span class="capitalize font-bold bg-cyan-500/20 px-1.5 py-0.5 rounded text-[10px]">Tipe: {{ selectedDakObj.jenis || 'DAK' }}</span>
+                        </div>
+                        <p class="font-bold text-slate-900 dark:text-white leading-snug">
+                          {{ selectedDakObj.nama_full }}
+                        </p>
+                      </div>
+                    </template>
+                    <span v-else class="text-slate-400 font-medium text-xs">
+                      -- Klik untuk mencari &amp; memilih Detail Rincian DAK (Single Select) --
+                    </span>
+                  </div>
+
+                  <ChevronDown class="w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200" :class="isDakDropdownOpen ? 'rotate-180 text-cyan-600' : ''" />
+                </div>
+
+                <!-- Dropdown Popover Menu -->
+                <div 
+                  v-if="isDakDropdownOpen"
+                  @click.stop
+                  class="absolute left-0 right-0 mt-1 bg-white dark:bg-[#1a263d] border-2 border-cyan-500/40 rounded-2xl shadow-2xl z-50 p-3 space-y-2.5 animate-in fade-in zoom-in-95 duration-150 max-h-80 flex flex-col"
+                >
+                  <!-- Search Filter Box -->
+                  <div class="relative">
+                    <Search class="w-4 h-4 text-cyan-600 absolute left-3 top-2.5" />
+                    <input 
+                      v-model="dakSearchQuery" 
+                      type="text" 
+                      placeholder="Cari berdasarkan rincian / menu DAK..." 
+                      class="w-full pl-9 pr-8 py-2 bg-slate-100 dark:bg-slate-900 border-2 border-cyan-300 dark:border-cyan-700/50 rounded-xl text-xs font-bold focus:outline-none focus:border-cyan-500" 
+                    />
+                    <button v-if="dakSearchQuery" @click="dakSearchQuery = ''" class="absolute right-3 top-2.5 text-slate-400 hover:text-cyan-600">
+                      <X class="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                  <!-- Options List (Single Select Radio / Click to Select) -->
+                  <div class="overflow-y-auto space-y-1.5 flex-1 pr-1 divide-y divide-slate-100 dark:divide-slate-800/60">
+                    <div 
+                      v-for="d in filteredDakOptions" 
+                      :key="d.id"
+                      @click="selectDakOption(d)"
+                      class="p-2.5 rounded-xl text-xs cursor-pointer transition-colors pt-2.5 flex items-start space-x-2.5"
+                      :class="form.id_dak_detail_rincian === d.id ? 'bg-cyan-500/15 text-cyan-950 dark:text-cyan-100 font-bold border border-cyan-500/30' : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'"
+                    >
+                      <input 
+                        type="radio" 
+                        name="dak_radio_option"
+                        :checked="form.id_dak_detail_rincian === d.id" 
+                        @click.stop="selectDakOption(d)"
+                        class="rounded-full text-cyan-600 focus:ring-cyan-500 mt-1 cursor-pointer" 
+                      />
+                      <div class="space-y-0.5 flex-1 min-w-0">
+                        <div class="flex items-center space-x-2">
+                          <span class="px-1.5 py-0.5 rounded bg-cyan-600/20 text-cyan-800 dark:text-cyan-300 font-mono text-[9px] font-extrabold">ID: {{ d.id }}</span>
+                          <span class="font-bold text-cyan-700 dark:text-cyan-300 text-[10px] uppercase truncate">[{{ d.jenis || 'DAK' }}]</span>
+                        </div>
+                        <p class="font-bold text-slate-900 dark:text-white leading-snug">
+                          {{ d.nama_full }}
+                        </p>
+                      </div>
+                      <Check v-if="form.id_dak_detail_rincian === d.id" class="w-4 h-4 text-cyan-600 shrink-0 mt-0.5" />
+                    </div>
+
+                    <div v-if="filteredDakOptions.length === 0" class="text-center py-6 text-slate-400 text-xs italic">
+                      Tidak ada data Detail Rincian DAK ditemukan
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1009,14 +1186,11 @@
 
           <!-- Section 3: Tagging Combobox Multi-Select Dropdown -->
           <div class="space-y-3 pt-2">
-            <h4 class="font-black text-slate-900 dark:text-white uppercase tracking-wider text-[11px] pb-1 border-b border-slate-200 dark:border-slate-800 flex items-center space-x-1.5">
-              <Tag class="w-4 h-4 text-purple-600" />
-              <span>Tagging Program / Prioritas</span>
-            </h4>
+            
 
             <div class="relative space-y-2">
               <label class="font-bold text-slate-700 dark:text-slate-300 block">
-                Tagging (Combobox Multi-Select Dropdown)
+                Tagging
               </label>
 
               <!-- Custom Combobox Trigger Box -->
@@ -1042,7 +1216,7 @@
                     </button>
                   </span>
                   <span v-if="!form.tags || form.tags.length === 0" class="text-slate-400 font-medium text-xs px-1">
-                    -- Pilih Tagging (Multi-select Combobox) --
+                    -- Pilih Tagging (Bisa lebih dari satu) --
                   </span>
                 </div>
 
@@ -1098,6 +1272,258 @@
 
                   <div v-if="filteredTaggingOptions.length === 0" class="text-center py-4 text-slate-400 text-xs italic">
                     Tidak ada tagging ditemukan
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Conditional Section: Usulan Pokir DPRD (tabel ta_pokir) -->
+            <div v-if="form.tags && form.tags.includes('Usulan Pokir DPRD')" class="sm:col-span-2 lg:col-span-3 space-y-2.5 p-4 rounded-2xl bg-amber-500/10 border-2 border-amber-500/30 relative">
+              <div class="flex items-center justify-between">
+                <label class="font-extrabold text-amber-900 dark:text-amber-200 flex items-center space-x-1.5 text-xs">
+                  <FileText class="w-4 h-4 text-amber-600 shrink-0" />
+                  <span>Usulan Pokir DPRD</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-300">
+                    {{ (form.id_usulan_pokir || []).length }} Dipilih
+                  </span>
+                </label>
+                <button 
+                  v-if="form.id_usulan_pokir && form.id_usulan_pokir.length > 0" 
+                  type="button" 
+                  @click="clearAllPokir" 
+                  class="text-[10px] font-black text-rose-500 hover:underline cursor-pointer"
+                >
+                  Reset Pilihan
+                </button>
+              </div>
+
+              <!-- Trigger Box showing selected Pokir cards/badges or placeholder -->
+              <div 
+                @click.stop="isPokirDropdownOpen = !isPokirDropdownOpen"
+                class="min-h-[44px] w-full p-2 bg-white dark:bg-slate-900 border-2 border-amber-300 dark:border-amber-700/50 rounded-xl cursor-pointer flex items-center justify-between gap-2 focus:border-amber-600 transition-all shadow-xs"
+                :class="isPokirDropdownOpen ? 'border-amber-600 ring-2 ring-amber-500/20' : ''"
+              >
+                <!-- Selected Items Display -->
+                <div class="flex flex-col gap-1.5 flex-1">
+                  <template v-if="selectedPokirObjs && selectedPokirObjs.length > 0">
+                    <div 
+                      v-for="p in selectedPokirObjs" 
+                      :key="p.id_usulan"
+                      class="flex items-start justify-between gap-2 p-2 rounded-xl bg-amber-500/15 dark:bg-amber-500/20 border border-amber-500/30 text-amber-950 dark:text-amber-100 text-xs"
+                    >
+                      <div class="space-y-0.5 flex-1 min-w-0">
+                        <div class="flex items-center space-x-1.5 font-black text-amber-800 dark:text-amber-300 text-[11px]">
+                          <span class="px-1.5 py-0.5 rounded bg-amber-600 text-white font-mono text-[9px]">ID: {{ p.id_usulan }}</span>
+                          <span>Pengusul: {{ p.nama_pengusul || '-' }}</span>
+                        </div>
+                        <p class="font-bold text-slate-800 dark:text-slate-200 text-xs leading-snug">
+                          {{ p.nama_kamus }}
+                        </p>
+                        <p v-if="p.usulan" class="text-[11px] text-slate-600 dark:text-slate-400 italic leading-snug">
+                          "{{ p.usulan }}"
+                        </p>
+                        <p v-if="p.alamat_teks" class="text-[10px] font-semibold text-amber-800 dark:text-amber-300 leading-snug flex items-center space-x-1">
+                          <span>📍 Alamat: {{ p.alamat_teks }}</span>
+                        </p>
+                      </div>
+                      <button 
+                        type="button" 
+                        @click.stop="togglePokirSelection(p.id_usulan)" 
+                        class="p-1 rounded-lg hover:bg-rose-500/20 text-rose-600 transition-colors shrink-0 cursor-pointer"
+                        title="Hapus Usulan Ini"
+                      >
+                        <X class="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </template>
+                  <span v-else class="text-slate-400 font-medium text-xs px-1">
+                    -- Klik untuk mencari &amp; memilih Usulan Pokir DPRD (bisa dipilih lebih dari 1) --
+                  </span>
+                </div>
+
+                <ChevronDown class="w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200" :class="isPokirDropdownOpen ? 'rotate-180 text-amber-600' : ''" />
+              </div>
+
+              <!-- Dropdown Popover Menu -->
+              <div 
+                v-if="isPokirDropdownOpen"
+                @click.stop
+                class="absolute left-0 right-0 mt-1 bg-white dark:bg-[#1a263d] border-2 border-amber-500/40 rounded-2xl shadow-2xl z-50 p-3 space-y-2.5 animate-in fade-in zoom-in-95 duration-150 max-h-80 flex flex-col"
+              >
+                <!-- Search Filter Box -->
+                <div class="relative">
+                  <Search class="w-4 h-4 text-amber-600 absolute left-3 top-2.5" />
+                  <input 
+                    v-model="pokirSearchQuery" 
+                    type="text" 
+                    placeholder="Cari berdasarkan pengusul, kamus, usulan, alamat..." 
+                    class="w-full pl-9 pr-8 py-2 bg-slate-100 dark:bg-slate-900 border-2 border-amber-300 dark:border-amber-700/50 rounded-xl text-xs font-bold focus:outline-none focus:border-amber-500" 
+                  />
+                  <button v-if="pokirSearchQuery" @click="pokirSearchQuery = ''" class="absolute right-3 top-2.5 text-slate-400 hover:text-amber-600">
+                    <X class="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                <!-- Options List -->
+                <div class="overflow-y-auto space-y-1.5 flex-1 pr-1 divide-y divide-slate-100 dark:divide-slate-800/60">
+                  <div 
+                    v-for="p in filteredPokirOptions" 
+                    :key="p.id_usulan"
+                    @click="togglePokirSelection(p.id_usulan)"
+                    class="p-2.5 rounded-xl text-xs cursor-pointer transition-colors pt-2.5 flex items-start space-x-2.5"
+                    :class="form.id_usulan_pokir && form.id_usulan_pokir.includes(p.id_usulan) ? 'bg-amber-500/15 text-amber-950 dark:text-amber-100 font-bold border border-amber-500/30' : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'"
+                  >
+                    <input 
+                      type="checkbox" 
+                      :checked="form.id_usulan_pokir && form.id_usulan_pokir.includes(p.id_usulan)" 
+                      @click.stop="togglePokirSelection(p.id_usulan)"
+                      class="rounded text-amber-600 focus:ring-amber-500 mt-1 cursor-pointer" 
+                    />
+                    <div class="space-y-0.5 flex-1 min-w-0">
+                      <div class="flex items-center space-x-2">
+                        <span class="px-1.5 py-0.5 rounded bg-amber-600/20 text-amber-800 dark:text-amber-300 font-mono text-[9px] font-extrabold">ID: {{ p.id_usulan }}</span>
+                        <span class="font-extrabold text-amber-700 dark:text-amber-300 text-[11px] truncate">Pengusul: {{ p.nama_pengusul || '-' }}</span>
+                      </div>
+                      <p class="font-bold text-slate-900 dark:text-white leading-snug">
+                        {{ p.nama_kamus }}
+                      </p>
+                      <p v-if="p.usulan" class="text-[11px] text-slate-600 dark:text-slate-400 italic leading-snug">
+                        "{{ p.usulan }}"
+                      </p>
+                      <p v-if="p.alamat_teks" class="text-[10px] font-semibold text-amber-800 dark:text-amber-300 leading-snug">
+                        📍 Alamat: {{ p.alamat_teks }}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div v-if="filteredPokirOptions.length === 0" class="text-center py-6 text-slate-400 text-xs italic">
+                    Tidak ada data Usulan Pokir DPRD ditemukan
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Conditional Section: Usulan Musrenbang (tabel ta_musrenbang) -->
+            <div v-if="form.tags && form.tags.includes('Usulan Musrenbang')" class="sm:col-span-2 lg:col-span-3 space-y-2.5 p-4 rounded-2xl bg-teal-500/10 border-2 border-teal-500/30 relative">
+              <div class="flex items-center justify-between">
+                <label class="font-extrabold text-teal-900 dark:text-teal-200 flex items-center space-x-1.5 text-xs">
+                  <FileText class="w-4 h-4 text-teal-600 shrink-0" />
+                  <span>Usulan Musrenbang</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-800 dark:text-teal-300">
+                    {{ (form.id_usulan_musrenbang || []).length }} Dipilih
+                  </span>
+                </label>
+                <button 
+                  v-if="form.id_usulan_musrenbang && form.id_usulan_musrenbang.length > 0" 
+                  type="button" 
+                  @click="clearAllMusrenbang" 
+                  class="text-[10px] font-black text-rose-500 hover:underline cursor-pointer"
+                >
+                  Reset Pilihan
+                </button>
+              </div>
+
+              <!-- Trigger Box showing selected Musrenbang cards/badges or placeholder -->
+              <div 
+                @click.stop="isMusrenbangDropdownOpen = !isMusrenbangDropdownOpen"
+                class="min-h-[44px] w-full p-2 bg-white dark:bg-slate-900 border-2 border-teal-300 dark:border-teal-700/50 rounded-xl cursor-pointer flex items-center justify-between gap-2 focus:border-teal-600 transition-all shadow-xs"
+                :class="isMusrenbangDropdownOpen ? 'border-teal-600 ring-2 ring-teal-500/20' : ''"
+              >
+                <!-- Selected Items Display -->
+                <div class="flex flex-col gap-1.5 flex-1">
+                  <template v-if="selectedMusrenbangObjs && selectedMusrenbangObjs.length > 0">
+                    <div 
+                      v-for="m in selectedMusrenbangObjs" 
+                      :key="m.id_usulan"
+                      class="flex items-start justify-between gap-2 p-2 rounded-xl bg-teal-500/15 dark:bg-teal-500/20 border border-teal-500/30 text-teal-950 dark:text-teal-100 text-xs"
+                    >
+                      <div class="space-y-0.5 flex-1 min-w-0">
+                        <div class="flex items-center space-x-1.5 font-black text-teal-800 dark:text-teal-300 text-[11px]">
+                          <span class="px-1.5 py-0.5 rounded bg-teal-600 text-white font-mono text-[9px]">ID: {{ m.id_usulan }}</span>
+                          <span>Pengusul: {{ m.nama_pengusul || '-' }}</span>
+                        </div>
+                        <p class="font-bold text-slate-800 dark:text-slate-200 text-xs leading-snug">
+                          {{ m.nama_kamus }}
+                        </p>
+                        <p v-if="m.usulan" class="text-[11px] text-slate-600 dark:text-slate-400 italic leading-snug">
+                          "{{ m.usulan }}"
+                        </p>
+                        <p v-if="m.alamat_teks" class="text-[10px] font-semibold text-teal-800 dark:text-teal-300 leading-snug flex items-center space-x-1">
+                          <span>📍 Alamat: {{ m.alamat_teks }}</span>
+                        </p>
+                      </div>
+                      <button 
+                        type="button" 
+                        @click.stop="toggleMusrenbangSelection(m.id_usulan)" 
+                        class="p-1 rounded-lg hover:bg-rose-500/20 text-rose-600 transition-colors shrink-0 cursor-pointer"
+                        title="Hapus Usulan Ini"
+                      >
+                        <X class="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </template>
+                  <span v-else class="text-slate-400 font-medium text-xs px-1">
+                    -- Klik untuk mencari &amp; memilih Usulan Musrenbang (bisa dipilih lebih dari 1) --
+                  </span>
+                </div>
+
+                <ChevronDown class="w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200" :class="isMusrenbangDropdownOpen ? 'rotate-180 text-teal-600' : ''" />
+              </div>
+
+              <!-- Dropdown Popover Menu -->
+              <div 
+                v-if="isMusrenbangDropdownOpen"
+                @click.stop
+                class="absolute left-0 right-0 mt-1 bg-white dark:bg-[#1a263d] border-2 border-teal-500/40 rounded-2xl shadow-2xl z-50 p-3 space-y-2.5 animate-in fade-in zoom-in-95 duration-150 max-h-80 flex flex-col"
+              >
+                <!-- Search Filter Box -->
+                <div class="relative">
+                  <Search class="w-4 h-4 text-teal-600 absolute left-3 top-2.5" />
+                  <input 
+                    v-model="musrenbangSearchQuery" 
+                    type="text" 
+                    placeholder="Cari berdasarkan pengusul, kamus, usulan, alamat..." 
+                    class="w-full pl-9 pr-8 py-2 bg-slate-100 dark:bg-slate-900 border-2 border-teal-300 dark:border-teal-700/50 rounded-xl text-xs font-bold focus:outline-none focus:border-teal-500" 
+                  />
+                  <button v-if="musrenbangSearchQuery" @click="musrenbangSearchQuery = ''" class="absolute right-3 top-2.5 text-slate-400 hover:text-teal-600">
+                    <X class="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                <!-- Options List -->
+                <div class="overflow-y-auto space-y-1.5 flex-1 pr-1 divide-y divide-slate-100 dark:divide-slate-800/60">
+                  <div 
+                    v-for="m in filteredMusrenbangOptions" 
+                    :key="m.id_usulan"
+                    @click="toggleMusrenbangSelection(m.id_usulan)"
+                    class="p-2.5 rounded-xl text-xs cursor-pointer transition-colors pt-2.5 flex items-start space-x-2.5"
+                    :class="form.id_usulan_musrenbang && form.id_usulan_musrenbang.includes(m.id_usulan) ? 'bg-teal-500/15 text-teal-950 dark:text-teal-100 font-bold border border-teal-500/30' : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'"
+                  >
+                    <input 
+                      type="checkbox" 
+                      :checked="form.id_usulan_musrenbang && form.id_usulan_musrenbang.includes(m.id_usulan)" 
+                      @click.stop="toggleMusrenbangSelection(m.id_usulan)"
+                      class="rounded text-teal-600 focus:ring-teal-500 mt-1 cursor-pointer" 
+                    />
+                    <div class="space-y-0.5 flex-1 min-w-0">
+                      <div class="flex items-center space-x-2">
+                        <span class="px-1.5 py-0.5 rounded bg-teal-600/20 text-teal-800 dark:text-teal-300 font-mono text-[9px] font-extrabold">ID: {{ m.id_usulan }}</span>
+                        <span class="font-extrabold text-teal-700 dark:text-teal-300 text-[11px] truncate">Pengusul: {{ m.nama_pengusul || '-' }}</span>
+                      </div>
+                      <p class="font-bold text-slate-900 dark:text-white leading-snug">
+                        {{ m.nama_kamus }}
+                      </p>
+                      <p v-if="m.usulan" class="text-[11px] text-slate-600 dark:text-slate-400 italic leading-snug">
+                        "{{ m.usulan }}"
+                      </p>
+                      <p v-if="m.alamat_teks" class="text-[10px] font-semibold text-teal-800 dark:text-teal-300 leading-snug">
+                        📍 Alamat: {{ m.alamat_teks }}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div v-if="filteredMusrenbangOptions.length === 0" class="text-center py-6 text-slate-400 text-xs italic">
+                    Tidak ada data Usulan Musrenbang ditemukan
                   </div>
                 </div>
               </div>
@@ -1397,7 +1823,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, nextTick } from 'vue'
+import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { notifySuccess, notifyError, notifyWarning, confirmDialog, promptDialog } from '@/utils/notify'
 import axios from 'axios'
@@ -1417,6 +1843,7 @@ import {
   ArrowLeft, 
   Loader2, 
   FileX,
+  FileText,
   AlertTriangle,
   Plus,
   Pencil,
@@ -1430,7 +1857,10 @@ import {
   Send,
   CheckCircle2,
   Lock,
-  Settings
+  Settings,
+  Maximize2,
+  Minimize2,
+  UserCheck
 } from 'lucide-vue-next'
 
 const authStore = useAuthStore()
@@ -1457,6 +1887,43 @@ const showSubmitModal = ref(false)
 const loadingValidation = ref(false)
 const submitValidationData = ref(null)
 const submittingRko = ref(false)
+
+const form = ref({
+  id_sub_pd: null,
+  id_subkegiatan: '',
+  tahun: 2026,
+  nomor_pekerjaan: null,
+  nama_pekerjaan: '',
+  ket_pekerjaan: '',
+  lokasi: '',
+  pagu_anggaran: 0,
+  volume: null,
+  satuan: '',
+  nomor_rup: '',
+  jenis_paket: 1,
+  jenis_pengadaan: 1,
+  tipe_swa: null,
+  penyelenggara_swa: '',
+  metode: null,
+  awal_pelaksanaan: null,
+  akhir_pelaksanaan: null,
+  pelaksanaan_bulan: [],
+  awal_pemilihan: null,
+  akhir_pemilihan: null,
+  awal_kontrak: null,
+  akhir_kontrak: null,
+  nama_ppk: '',
+  nama_pptk: '',
+  id_sumber_dana: null,
+  sumber_dana: '',
+  id_usulan_pokir: [],
+  id_usulan_musrenbang: [],
+  id_dak_detail_rincian: null,
+  tags: [],
+  lokasi_list: [],
+  target_fisik: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  target_keuangan: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+})
 
 const personelOptions = ref([])
 
@@ -1495,7 +1962,121 @@ const toggleTagSelection = (tagVal) => {
 
 const clearAllTags = () => {
   form.value.tags = []
+  form.value.id_usulan_pokir = []
+  form.value.id_usulan_musrenbang = []
 }
+
+const pokirOptions = ref([])
+const loadingPokirOptions = ref(false)
+const pokirSearchQuery = ref('')
+const isPokirDropdownOpen = ref(false)
+
+const fetchPokirOptions = async () => {
+  if (pokirOptions.value.length > 0) return
+  loadingPokirOptions.value = true
+  try {
+    const res = await axios.get('/api/v1/rko/pokir-options', {
+      params: { tahun: selectedTahun.value }
+    })
+    pokirOptions.value = res.data || []
+  } catch (err) {
+    console.warn('Gagal memuat options Pokir DPRD:', err)
+  } finally {
+    loadingPokirOptions.value = false
+  }
+}
+
+const filteredPokirOptions = computed(() => {
+  if (!pokirSearchQuery.value.trim()) return pokirOptions.value
+  const q = pokirSearchQuery.value.toLowerCase().trim()
+  return pokirOptions.value.filter(p => 
+    (p.nama_kamus && p.nama_kamus.toLowerCase().includes(q)) ||
+    (p.usulan && p.usulan.toLowerCase().includes(q)) ||
+    (p.nama_pengusul && p.nama_pengusul.toLowerCase().includes(q)) ||
+    (p.alamat_teks && p.alamat_teks.toLowerCase().includes(q))
+  )
+})
+
+const selectedPokirObjs = computed(() => {
+  if (!form.value.id_usulan_pokir || form.value.id_usulan_pokir.length === 0) return []
+  const setIds = new Set(form.value.id_usulan_pokir)
+  return pokirOptions.value.filter(p => setIds.has(p.id_usulan))
+})
+
+const togglePokirSelection = (idUsulan) => {
+  if (!form.value.id_usulan_pokir) form.value.id_usulan_pokir = []
+  const idx = form.value.id_usulan_pokir.indexOf(idUsulan)
+  if (idx > -1) {
+    form.value.id_usulan_pokir.splice(idx, 1)
+  } else {
+    form.value.id_usulan_pokir.push(idUsulan)
+  }
+}
+
+const clearAllPokir = () => {
+  form.value.id_usulan_pokir = []
+}
+
+// Usulan Musrenbang State & Methods
+const musrenbangOptions = ref([])
+const loadingMusrenbangOptions = ref(false)
+const musrenbangSearchQuery = ref('')
+const isMusrenbangDropdownOpen = ref(false)
+
+const fetchMusrenbangOptions = async () => {
+  if (musrenbangOptions.value.length > 0) return
+  loadingMusrenbangOptions.value = true
+  try {
+    const res = await axios.get('/api/v1/rko/musrenbang-options', {
+      params: { tahun: selectedTahun.value }
+    })
+    musrenbangOptions.value = res.data || []
+  } catch (err) {
+    console.warn('Gagal memuat options Musrenbang:', err)
+  } finally {
+    loadingMusrenbangOptions.value = false
+  }
+}
+
+const filteredMusrenbangOptions = computed(() => {
+  if (!musrenbangSearchQuery.value.trim()) return musrenbangOptions.value
+  const q = musrenbangSearchQuery.value.toLowerCase().trim()
+  return musrenbangOptions.value.filter(m => 
+    (m.nama_kamus && m.nama_kamus.toLowerCase().includes(q)) ||
+    (m.usulan && m.usulan.toLowerCase().includes(q)) ||
+    (m.nama_pengusul && m.nama_pengusul.toLowerCase().includes(q)) ||
+    (m.alamat_teks && m.alamat_teks.toLowerCase().includes(q))
+  )
+})
+
+const selectedMusrenbangObjs = computed(() => {
+  if (!form.value.id_usulan_musrenbang || form.value.id_usulan_musrenbang.length === 0) return []
+  const setIds = new Set(form.value.id_usulan_musrenbang)
+  return musrenbangOptions.value.filter(m => setIds.has(m.id_usulan))
+})
+
+const toggleMusrenbangSelection = (idUsulan) => {
+  if (!form.value.id_usulan_musrenbang) form.value.id_usulan_musrenbang = []
+  const idx = form.value.id_usulan_musrenbang.indexOf(idUsulan)
+  if (idx > -1) {
+    form.value.id_usulan_musrenbang.splice(idx, 1)
+  } else {
+    form.value.id_usulan_musrenbang.push(idUsulan)
+  }
+}
+
+const clearAllMusrenbang = () => {
+  form.value.id_usulan_musrenbang = []
+}
+
+watch(() => form.value.tags, (newTags) => {
+  if (newTags && newTags.includes('Usulan Pokir DPRD')) {
+    fetchPokirOptions()
+  }
+  if (newTags && newTags.includes('Usulan Musrenbang')) {
+    fetchMusrenbangOptions()
+  }
+}, { deep: true })
 
 const isPelaksanaanDropdownOpen = ref(false)
 
@@ -1574,49 +2155,90 @@ const selectSumberDanaOption = (sdObj) => {
   sumberDanaSearchQuery.value = ''
 }
 
+// Detail Rincian DAK State & Methods
+const dakOptions = ref([])
+const loadingDakOptions = ref(false)
+const dakSearchQuery = ref('')
+const isDakDropdownOpen = ref(false)
+
+const isDakSumberDana = computed(() => {
+  if (selectedSumberDanaObj.value && selectedSumberDanaObj.value.kode_dana) {
+    return selectedSumberDanaObj.value.kode_dana.startsWith('2.2.01.09')
+  }
+  return false
+})
+
+const fetchDakOptions = async () => {
+  if (dakOptions.value.length > 0) return
+  loadingDakOptions.value = true
+  try {
+    const targetSubPd = form.value.id_sub_pd || selectedOpdDetail.value?.opd?.id_sub_pd
+    const res = await axios.get('/api/v1/rko/dak-options', {
+      params: { 
+        id_sub_pd: targetSubPd,
+        tahun: selectedTahun.value 
+      }
+    })
+    dakOptions.value = res.data || []
+  } catch (err) {
+    console.warn('Gagal memuat options DAK:', err)
+  } finally {
+    loadingDakOptions.value = false
+  }
+}
+
+const filteredDakOptions = computed(() => {
+  if (!dakSearchQuery.value.trim()) return dakOptions.value
+  const q = dakSearchQuery.value.toLowerCase().trim()
+  return dakOptions.value.filter(d => 
+    (d.nama_full && d.nama_full.toLowerCase().includes(q)) ||
+    (d.t1_nama && d.t1_nama.toLowerCase().includes(q)) ||
+    (d.t2_nama && d.t2_nama.toLowerCase().includes(q)) ||
+    (d.t3_nama && d.t3_nama.toLowerCase().includes(q)) ||
+    (d.t4_nama && d.t4_nama.toLowerCase().includes(q)) ||
+    (d.t5_nama && d.t5_nama.toLowerCase().includes(q))
+  )
+})
+
+const selectedDakObj = computed(() => {
+  if (!form.value.id_dak_detail_rincian) return null
+  return dakOptions.value.find(d => d.id === form.value.id_dak_detail_rincian) || null
+})
+
+const selectDakOption = (dakItem) => {
+  if (!dakItem) {
+    form.value.id_dak_detail_rincian = null
+  } else {
+    form.value.id_dak_detail_rincian = dakItem.id
+  }
+  isDakDropdownOpen.value = false
+  dakSearchQuery.value = ''
+}
+
+const clearDakSelection = () => {
+  form.value.id_dak_detail_rincian = null
+}
+
+watch(isDakSumberDana, (newVal) => {
+  if (newVal) {
+    fetchDakOptions()
+  } else {
+    form.value.id_dak_detail_rincian = null
+  }
+})
+
 const monthNames = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
 const monthShorts = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
 const monthKeys = ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'agu', 'sep', 'okt', 'nov', 'des']
 
 // Modal States
 const showModal = ref(false)
+const isFormMaximized = ref(false)
 const isEditMode = ref(false)
 const editingPekerjaanId = ref(null)
 const targetSubkegiatanName = ref('')
 const showDeleteModal = ref(false)
 const pekerjaanToDelete = ref(null)
-
-const form = ref({
-  id_sub_pd: null,
-  id_subkegiatan: '',
-  tahun: 2026,
-  nomor_pekerjaan: null,
-  nama_pekerjaan: '',
-  ket_pekerjaan: '',
-  pagu_anggaran: 0,
-  volume: null,
-  satuan: '',
-  nomor_rup: '',
-  jenis_paket: 1,
-  jenis_pengadaan: 1,
-  tipe_swa: null,
-  penyelenggara_swa: '',
-  metode: null,
-  awal_pelaksanaan: null,
-  akhir_pelaksanaan: null,
-  pelaksanaan_bulan: [],
-  awal_pemilihan: null,
-  akhir_pemilihan: null,
-  awal_kontrak: null,
-  akhir_kontrak: null,
-  nama_ppk: '',
-  nama_pptk: '',
-  id_sumber_dana: null,
-  sumber_dana: '',
-  tags: [],
-  target_fisik: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  target_keuangan: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-})
 
 const filteredOpdList = computed(() => {
   if (!searchQuery.value.trim()) return opdList.value
@@ -1651,6 +2273,9 @@ const toggleMenu = (id) => {
 const closeMenu = () => {
   activeMenuId.value = null
   isTagDropdownOpen.value = false
+  isPokirDropdownOpen.value = false
+  isMusrenbangDropdownOpen.value = false
+  isDakDropdownOpen.value = false
 }
 
 const fetchData = async () => {
@@ -1979,12 +2604,18 @@ const openCreateModal = (sub) => {
     nama_pptk: '',
     id_sumber_dana: null,
     sumber_dana: '',
+    id_usulan_pokir: [],
+    id_usulan_musrenbang: [],
+    id_dak_detail_rincian: null,
     tags: [],
     lokasi_list: [],
     target_fisik: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     target_keuangan: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   }
   fetchTaggingOptions()
+  fetchPokirOptions()
+  fetchMusrenbangOptions()
+  if (isDakSumberDana.value) fetchDakOptions()
   showModal.value = true
   initRkoMap()
 }
@@ -1996,9 +2627,17 @@ const openEditModal = async (pek, sub) => {
   const targetOpdId = pek.id_sub_pd || selectedOpdDetail.value?.opd?.id_sub_pd
   fetchPersonelOptions(targetOpdId)
   fetchTaggingOptions()
+  fetchPokirOptions()
+  fetchMusrenbangOptions()
   isPelaksanaanDropdownOpen.value = false
   isSumberDanaDropdownOpen.value = false
+  isPokirDropdownOpen.value = false
+  isMusrenbangDropdownOpen.value = false
+  isDakDropdownOpen.value = false
   sumberDanaSearchQuery.value = ''
+  pokirSearchQuery.value = ''
+  musrenbangSearchQuery.value = ''
+  dakSearchQuery.value = ''
   
   try {
     const res = await axios.get(`/api/v1/rko/pekerjaan/${pek.id}`)
@@ -2031,6 +2670,9 @@ const openEditModal = async (pek, sub) => {
       nama_pptk: d.nama_pptk || '',
       id_sumber_dana: d.id_sumber_dana || null,
       sumber_dana: d.sumber_dana || '',
+      id_usulan_pokir: d.id_usulan_pokir || pek.id_usulan_pokir || [],
+      id_usulan_musrenbang: d.id_usulan_musrenbang || pek.id_usulan_musrenbang || [],
+      id_dak_detail_rincian: d.id_dak_detail_rincian || pek.id_dak_detail_rincian || null,
       tags: d.tags || [],
       lokasi_list: d.lokasi_list || [],
       target_fisik: monthKeys.map(k => Number(d[k + '_f'] || 0)),
@@ -2065,12 +2707,16 @@ const openEditModal = async (pek, sub) => {
       nama_pptk: pek.nama_pptk || '',
       id_sumber_dana: pek.id_sumber_dana || null,
       sumber_dana: pek.sumber_dana || '',
+      id_usulan_pokir: pek.id_usulan_pokir || [],
+      id_usulan_musrenbang: pek.id_usulan_musrenbang || [],
+      id_dak_detail_rincian: pek.id_dak_detail_rincian || null,
       tags: pek.tags || [],
       lokasi_list: [],
       target_fisik: [...pek.target_fisik],
       target_keuangan: [...pek.target_keuangan]
     }
   }
+  if (isDakSumberDana.value) fetchDakOptions()
   showModal.value = true
   initRkoMap()
 }
@@ -2106,6 +2752,9 @@ const savePekerjaan = async () => {
       nama_pptk: form.value.nama_pptk || null,
       id_sumber_dana: form.value.id_sumber_dana ? Number(form.value.id_sumber_dana) : null,
       sumber_dana: form.value.sumber_dana || null,
+      id_usulan_pokir: form.value.tags && form.value.tags.includes('Usulan Pokir DPRD') ? (form.value.id_usulan_pokir || []) : [],
+      id_usulan_musrenbang: form.value.tags && form.value.tags.includes('Usulan Musrenbang') ? (form.value.id_usulan_musrenbang || []) : [],
+      id_dak_detail_rincian: isDakSumberDana.value ? (form.value.id_dak_detail_rincian || null) : null,
       tags: form.value.tags,
       lokasi_list: form.value.lokasi_list || []
     }

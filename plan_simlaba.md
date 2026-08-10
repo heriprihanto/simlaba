@@ -222,3 +222,161 @@ tampilkan Status submit dan approve admin di OPD List
 Form Pekerjaan
 nama_ppk pilih dari ta_personel
 nama_pptk pilih dari ta_personel
+
+Submit RKO Error AttributeError: 'CurrentUser' object has no attribute 'name'
+
+
+Notifikasi jangan pakai javascript alert, pakai notifikasi yang modern 
+
+
+## RKO
+Form Pekerjaan 
+ubah Pelaksanaan Pekerjaan menjadi satu combobox bulan Januari - Desember, bisa dipilih lebih dari 1 (multiselect)
+
+
+
+## RKO
+Form Pekerjaan 
+Tambah field Sumber dana, combobox dari tabel ref_sumberdana
+
+
+## Pengaturan
+Pengaturan User, Peragnkat Daerah dan Tagging, kolom aksi icon edit dapus pakai menu saja 
+
+
+## RKO
+Saat expand semua item treeview, lebar kolom Program > Kegiatan > Subkegiatan > Pekerjaan maksimal 50%
+
+
+## Dashboard
+Perbaiki Data pada dashboard, 
+Total angggaran field anggaran pada tabel renja_subkegiatan
+Serapan Anggaran field realisasi pada tabel renja_subkegiatan_realisasi
+Capaian Realisasi Fisik field fisik tabel ta_pekerjaan_realisasi pada bulan terahir
+Deviasi (realisasi fisik - target fisik) 
+
+## RKO 
+Form Pekerjaan bisa maximize 
+
+## RKO
+Tambah kolom nama_ppk dan nama_pptk
+
+## RKO
+Tooltip text pada item di kolom Program > Kegiatan > Subkegiatan > Pekerjaan
+
+## RKO 
+Form Pekerjaan
+Jika pilih tagging Usulan Pokir DPRD, munculkan combobox searcable Usulan Pokir DPRD (tabel ta_pokir), tampilkan field nama_kamus, usulan, nama_pengusul
+bisa dipilih lebih dari satu
+
+
+## RKO
+Form Pekerjaan
+Jika pilih tagging Usulan Musrenbang, munculkan combobox searcable Usulan Musrenbang (tabel ta_musrenbang), tampilkan field nama_kamus, usulan, nama_pengusul
+bisa dipilih lebih dari satu
+
+## RKO
+Form Pekerjaan
+Jika pilih sumber dana dengan kode diawali 2.2.01.09 (Dana Alokasi Khusus DAK), munculkan combobox searcable data dari tabel dak_detail_rincian
+hanya bisa dipilih satu
+
+
+
+## RFK
+- Tampilan Awal OPD List
+- Kolom  Kode OPD | Nama OPD | Laporan Bulanan |
+                              | Jan | Feb | Mar | Apr | Mei | Jun | Jul | Agu | Sep | Okt | Nov | Des |
+  tgl_kirim format Tanggal Bulan
+tabel terkait  ta_opd, ta_laporan_rfk
+
+## RFK
+Klik nama OPD, tampilkan tabel :
+No | Bulan | Tanggal Buat | Tanggal Kirim | Tanggal Verifikasi
+
+dari tabel ta_laporan_rfk
+
+## RFK
+Tampilkan hanya sampai bulan yang ada di tabel  ta_laporan_rfk
+tambah button Buat Laporan RFK
+Proses Buat Laporan RFK : 
+- Jika RKO sudah diapprove admin
+- Jika bulan sebelumnya sudah dikirim
+
+
+## RFK
+Klik Item Bulan, tampilkan data RFK bulan tersebut
+| Program > Kegiatan > Sub kegiatan > Pekerjaan   | Anggaran | Realisasi Fisik | Realisasi Keuangan                                   | Realisai Keuangan Per Bulan                                           |
+|                                                 |          |                 | Bulan Ini  | Total Sampai Bulan Ini  | Total (SIPD)  | Jan | Feb | Mar | Apr | Mei | Jun | Jul | Agu | Sep | Okt | Nov | Des |
+| -------- | ------- |        |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+
+ | Anggaran |  | 
+
+ ## RFK
+ Revisi flow RFK
+ Klik Nama OPD tampilkan tabel bulan
+ klik item bulan pada tabel bulan  tampilkan data RFK (jangan bentuk modal)
+
+## RFK
+ khusus admin
+ pada tabel bulan tambah tombol Aksi Hapus 
+
+- Proses hapus harus urut dari bulan terbaru dulu, tidak bisa lompat
+ 
+
+## RFK
+Klik Item Pekerjaan, tampilkan form entri realisasi 
+tabel ta_pekerjaan_realisasi
+
+## RFK
+saat buat laporan RFK, copy ta_pekerjaan_realisasi bulan lalu. realisasi fisik dan fisik bulan lalu
+Form Entri Realisasi Pekerjaan tampilkan realisasi fisik bulan lalu, target fisik bulan ini, tagging
+
+## RFK
+Form Entri Realisasi Pekerjaan
+Buat tab Upload data dukunng (Foto, dokumen) untuk pekerjaan tersebut
+
+
+## RFK
+Form Entri Realisasi Pekerjaan
+tambah navigasi previous next untuk load data sebelum / berikutnya
+
+## RFK
+Form Entri Realisasi Pekerjaan
+simpan data jangan tutup window
+
+
+## Laporan 
+set nama variabel form yang akan di post 
+Perangkat daerah : pid_sub_pd
+Tahun : ptahun
+Bulan : pbulan
+Footer : pfooter
+Format : format
+
+
+## RFK
+Form Entri Realisasi Pekerjaan
+Buat tab Lokasi Pekerjaan, beserta map
+
+## RFK
+Form Entri Realisasi Pekerjaan
+Buat tab Kontrak / SPK
+Field :
+- Nama PPK
+- Nama PPTK
+- Nama Ketua Pokja / Pejabat Pengadaan
+- Nama Ketua PPHP
+- Nilai HPS
+- Nilai Kontrak
+- Sisa Anggaran
+- Nama Penyedia
+- Alamat Penyedia
+- Nama Pimpinan Penyedia
+- NPWP Penyedia
+- Nomor Pengadaan / Kontrak / SPK
+- Tanggal Kontrak (dari - sampai dengan)
+- Nomor SPMK
+- Tanggal SPMK (dari - sampai dengan)
+- Tanggal Adendum Kontrak (dari - sampai dengan)
+- Status (Selesai, Dalam Proses, Dibatalkan)
+-
