@@ -104,47 +104,38 @@ sh run.sh
 
 ### 2. Running Frontend
 
+#### A. Frontend SIMLABA (Port 5173)
 ```bash
-# Masuk ke direktori Frontend
-cd Frontend
-
-# Install dependencies
-npm install
-
-# Menjalankan Development Server
+cd FrontendSimlaba
 npm run dev
-
-# Kompilasi Production Bundle
-npm run build
 ```
-*Frontend App akan berjalan di: `http://localhost:5173`*
+*Frontend SIMLABA akan berjalan di: `http://localhost:5173`*
+
+#### B. Frontend EMONEV (Port 5174)
+```bash
+cd FrontendEmonev
+npm run dev
+```
+*Frontend EMONEV akan berjalan di: `http://localhost:5174`*
+
+#### C. Frontend EMONEV V2 — Windows 10 Desktop OS (Port 5175)
+```bash
+cd FrontendEmonevV2
+npm run dev
+```
+*Frontend EMONEV V2 Desktop OS akan berjalan di: `http://localhost:5175`*
 
 ---
 
 ## 📄 Struktur Direktori Proyek
 
 ```
-SIMLABA/
-├── Backend/
-│   ├── app/
-│   │   ├── api/
-│   │   │   └── endpoints/     # API Routes (auth, rko, dashboard, personel, pengaturan)
-│   │   ├── core/              # Database Config & Security
-│   │   └── main.py            # FastAPI Entry Point
-│   ├── run.sh                 # Backend Startup Script
-│   └── venv/                  # Python Virtual Environment
-├── Frontend/
-│   ├── src/
-│   │   ├── assets/            # CSS & Stylesheet
-│   │   ├── composables/       # Vue Composables (useTheme, etc)
-│   │   ├── router/            # Vue Router Navigation Rules
-│   │   ├── stores/            # Pinia Stores (auth.js)
-│   │   ├── utils/             # Helper utilities (notify.js, sweetalert2)
-│   │   └── views/             # Vue Pages (Dashboard, RKO, Peta, Personel, Pengaturan, Login)
-│   ├── index.html             # HTML Template
-│   ├── package.json           # Frontend Dependencies
-│   └── vite.config.js         # Vite Configuration
-├── plan_simlaba.md            # Plan & Catatan Pengembangan Project
+EMONEV_2027/
+├── Backend/                   # FastAPI Backend (Shared API - Port 8000)
+├── FrontendSimlaba/           # Frontend Web SIMLABA (Port 5173)
+├── FrontendEmonev/            # Frontend Web EMONEV (Port 5174)
+├── FrontendEmonevV2/          # Frontend Web EMONEV V2 Desktop Windows 10 (Port 5175)
+├── plan_simlaba.md            # Catatan & Plan Pengembangan
 └── README.md                  # Dokumentasi Proyek
 ```
 

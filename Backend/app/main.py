@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from app.core.config import settings
-from app.api.endpoints import auth, dashboard, personel, peta, pengaturan, rko, rfk
+from app.api.endpoints import auth, dashboard, personel, peta, pengaturan, rko, rfk, rpjpd, rpjmd
 from app.pages.page_router import page_router
 
 app = FastAPI(
@@ -43,6 +43,8 @@ app.include_router(peta.router, prefix=f"{settings.API_V1_STR}/peta", tags=["Pet
 app.include_router(pengaturan.router, prefix=f"{settings.API_V1_STR}/pengaturan", tags=["Pengaturan"])
 app.include_router(rko.router, prefix=f"{settings.API_V1_STR}/rko", tags=["RKO"])
 app.include_router(rfk.router, prefix=f"{settings.API_V1_STR}/rfk", tags=["RFK"])
+app.include_router(rpjpd.router, prefix=f"{settings.API_V1_STR}/rpjpd", tags=["RPJPD"])
+app.include_router(rpjmd.router, prefix=f"{settings.API_V1_STR}/rpjmd", tags=["RPJMD"])
 
 
 @app.get("/")

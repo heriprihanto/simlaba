@@ -380,3 +380,154 @@ Field :
 - Tanggal Adendum Kontrak (dari - sampai dengan)
 - Status (Selesai, Dalam Proses, Dibatalkan)
 -
+
+
+
+di Emonev Frontend, edit menu, isi tampilan kosong dulu:
+- Beranda 
+- Perencanaan
+  - RPJPD
+  - RPJMD
+  - Renstra
+  - Renja
+  - Perjanjian Kinerja
+- Pelaksanaan
+  - Capaian Kinerja Triwulanan
+  - SDG's
+  - Dana Alokasi Khusus
+  - Sinkronisasi Serapan Anggaran
+  - Pelaporan Kinerja
+  - Evaluasi Kinerja
+- Laporan (Tampilan Tetap)
+
+
+Emonev Frontend :
+Halaman RPJPD : buat tampilan dulu, Tab Menu :
+Visi Daerah | Sasaran Visi | Misi Daerah | Arah Kebijakan | Sasaran Pokok
+
+
+
+Emonev Frontend :
+Halaman RPJMD : buat tampilan kosong dulu, Tab Menu :
+Visi | Misi | Tujuan | Sasaran | Program | IKU | IKD | Proyeksi Kerangka Pendanaan
+
+
+Buatkan Frontend lagi EmonevV2, tampilan seperti desktop microsoft windows, dengan icon di desktop untuk membuka aplikasi nya, tampilan seperti window 10, di bawah taskbar ada jam, tanggal, sinyal jaringan, baterai, volume, koneksi internet
+
+Frontend Emonev V2, Icon belum bisa diklik, buat login form juga
+
+Frontend Emonev V2, 
+Desktop Icon :
+ RPJPD
+ RPJMD
+ Renstra
+ Renja
+ Perjanjian Kinerja
+ Capaian Kinerja
+ SDG's
+ Dana Alokasi Khusus
+ Sinkronisasi Serapan Anggaran
+ Pelaporan Kinerja
+ Evaluasi Kinerja
+ Laporan (Tampilan Tetap)
+
+taskbar hanya menampilkan window yang terbuka saja, bukan semua menu seperti di frontend sebelumnya 
+
+saat baru dibuka / reload, tampilkan window dashboard, letakkan di kanan, jadi tidak menutupi icon desktop
+
+buat supaya bisa login, logout
+
+
+login menggunakan metode yang sama dengan Frontend Simlaba
+
+Logout belum berfungsi 
+
+hapus icon network dan volume di taskbar
+logout di startmenu belum berjalan
+
+hapus icon battery di taskbar
+
+Frontend Emonev 
+RPJPD
+Visi : database di tabel rpjdp_visi
+Penjelasan Visi : database di tabel rpjdp_penjelasan_visi
+
+
+Frontend Emonev 
+RPJPD
+Sasaran Visi 
+database dari tabel rpjpd_sasaran_visi, rpjpd_indikator_sasaran_visi
+
+
+Frontend Emonev 
+RPJPD
+Sasaran Visi buat menjadi tree tabel saja
+
+
+Frontend Emonev 
+RPJPD
+Misi : database di tabel rpjdp_misi
+
+
+Frontend Emonev 
+RPJPD
+Arah kebijakan : database di tabel rpjdp_arah_kebijakan
+
+Frontend Emonev 
+RPJPD
+Arah kebijakan, dibuat kolom Periode Pelaksanaan RPJMD 
+                             1 | 2| 3| 4
+ 
+
+Frontend Emonev 
+RPJPD
+Arah Kebijakan, hapus kolom misi, tambah kolom sasaran
+
+
+Frontend Emonev 
+RPJPD
+Sasaran Pokok, buat Tree tabel 
+database dari tabel rpjpd_sasaran_pokok, rpjpd_indikator_sasaran_pokok
+
+Frontend Emonev 
+RPJPD
+Sasaran Pokok, 
+tambah kolom misi dan baseline
+
+Frontend Emonev 
+RPJPD, apakah kode Vue bisa dipecah menjadi beberapa file vue per menu?
+
+
+
+Frontend Emonev 
+RPJMD, dibuat modular
+Visi, data dari tabel rpjmd_visi
+Misi, data dari tabel rpjmd_misi 
+
+Frontend Emonev 
+RPJMD
+Tujuan, buat tree tabel 
+Tujuan dari tabel rpjmd_tujuan
+Indikator Tujuan dari tabel rpjmd_indikator_tujuan
+
+Frontend Emonev 
+RPJMD
+Tujuan, kolom misi dengan kalimat misi
+tabel terkait : r[jmd_misi, rpjmd_tujuan, rpjmd_tujuan_misi]
+
+Frontend Emonev 
+RPJMD
+Perbaiki target Indikator Tujuan
+Tahun 2025 : target0
+Tahun 2026 : target1
+Tahun 2027 : target2
+Tahun 2028 : target3
+Tahun 2029 : target4
+Tahun 2030 : target5
+
+
+Frontend Emonev 
+RPJMD
+Sasaran, buat tree tabel 
+Sasaran dari tabel rpjmd_sasaran
+Indikator Sasaran dari tabel rpjmd_indikator_sasaran
